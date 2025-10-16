@@ -1,30 +1,36 @@
+"use client"
+
+import { useLanguage } from "@/contexts/language-context"
+
 export default function Skills() {
+  const { t } = useLanguage()
+
   const skillCategories = [
     {
-      category: "モバイル開発",
+      category: t.skillCategories.mobile,
       skills: ["Android", "Flutter", "React Native", "iOS", "Kotlin", "Java"],
     },
     {
-      category: "IoT・通信",
-      skills: ["Bluetooth (BLE)", "Wi-Fi", "シリアル通信", "CANバス", "NFC"],
+      category: t.skillCategories.iot,
+      skills: ["Bluetooth (BLE)", "Wi-Fi", "Serial", "CAN Bus", "NFC"],
     },
     {
-      category: "プラットフォーム",
-      skills: ["Rockchip", "Qualcomm", "Android Framework", "ファームウェア"],
+      category: t.skillCategories.platform,
+      skills: ["Rockchip", "Qualcomm", "Android Framework", "Firmware"],
     },
     {
-      category: "AI・開発ツール",
-      skills: ["ChatGPT", "Gemini","Claude", "Cursor", "n8n"],
+      category: t.skillCategories.ai,
+      skills: ["ChatGPT", "Gemini", "Claude", "Cursor", "n8n"],
     },
     {
-      category: "その他",
-      skills: ["PMP認定", "プロジェクト管理", "チームマネジメント", "JNI", "C言語"],
+      category: t.skillCategories.other,
+      skills: ["PMP", "Project Management", "Team Leadership", "JNI", "C"],
     },
   ]
 
   return (
     <section className="space-y-16">
-      <h3 className="text-3xl font-light tracking-tight">スキル</h3>
+      <h3 className="text-3xl font-light tracking-tight">{t.skillsTitle}</h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {skillCategories.map((cat, idx) => (

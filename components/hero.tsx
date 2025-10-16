@@ -1,12 +1,13 @@
 "use client"
 
-import { useRef } from "react"
+import { useLanguage } from "@/contexts/language-context"
 
 export default function Hero() {
-  const aboutRef = useRef<HTMLDivElement>(null)
+  const { t } = useLanguage()
 
   const scrollToAbout = () => {
-    aboutRef.current?.scrollIntoView({ behavior: "smooth" })
+    const aboutSection = document.getElementById("about")
+    aboutSection?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -17,19 +18,15 @@ export default function Hero() {
 
       <div className="space-y-8">
         <h2 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-tight animate-fade-in">
-          シニア
+          {t.heroTitle1}
           <br />
-          <span className="text-muted-foreground">フルスタックフロントエンドエンジニア</span>
-          <br />
-          エンジニア
+          <span className="text-foreground/80">{t.heroTitle2}</span>
         </h2>
 
-        <p className="text-xl md:text-2xl text-muted-foreground font-light tracking-wide">
-          Crafting intuitive digital experiences through technology.
-        </p>
+        <p className="text-xl md:text-2xl text-foreground/70 font-light tracking-wide">{t.heroTagline}</p>
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed font-light">
-          10年以上にわたり、モバイルアプリ・IoTデバイス・スマートヘルス領域で豊富な開発経験を積んだシニアAndroidエンジニアです。
+        <p className="text-lg md:text-xl text-foreground/80 max-w-2xl leading-relaxed font-light">
+          {t.heroDescription}
         </p>
 
         <div className="pt-8 flex gap-6">
@@ -37,13 +34,13 @@ export default function Hero() {
             onClick={scrollToAbout}
             className="px-8 py-3 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300 text-sm tracking-widest font-light"
           >
-            EXPLORE
+            {t.exploreButton}
           </button>
-          <p className="text-sm text-muted-foreground tracking-widest pt-3">Email：zl282145321@gmail.com</p>
+          <p className="text-sm text-foreground/70 tracking-widest pt-3">
+            {t.email}：zl282145321@gmail.com
+          </p>
         </div>
       </div>
-
-      <div ref={aboutRef} className="absolute -top-20" />
     </section>
   )
 }
